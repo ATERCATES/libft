@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 03:15:46 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/11 15:33:55 by javifer2         ###   ########.fr       */
+/*   Created: 2025/05/11 18:26:31 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/11 18:41:42 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <stdlib.h>
 
-char	*strrchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	char	*pt;
+	char	*copy;
+	int		i;
+	int		length;
 
-	if ((char)c == '\0')
-		return ((char *)s + strlen(s));
-	pt = NULL;
-	while (*s)
+	i = 0;
+	length = ft_strlen(s);
+	copy = malloc(length + 1);
+	if (copy == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		if (*s == (char)c)
-			pt = (char *)s;
-		s++;
+		copy[i] = s[i];
+		i++;
 	}
-	return (pt);
+	copy[i] = '\0';
+	return (copy);
 }

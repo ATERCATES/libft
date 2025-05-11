@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 03:15:46 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/11 15:33:55 by javifer2         ###   ########.fr       */
+/*   Created: 2025/05/11 18:07:54 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/11 18:25:58 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <stdlib.h>
 
-char	*strrchr(const char *s, int c)
+void	*ft_calloc(size_t num, size_t size)
 {
-	char	*pt;
+	void	*ptr;
+	size_t	total_size;
 
-	if ((char)c == '\0')
-		return ((char *)s + strlen(s));
-	pt = NULL;
-	while (*s)
-	{
-		if (*s == (char)c)
-			pt = (char *)s;
-		s++;
-	}
-	return (pt);
+	total_size = num * size;
+	if (size != 0 && total_size / size != num)
+		return (NULL);
+	ptr = malloc(total_size);
+	if (ptr != NULL)
+		ft_bzero(ptr, total_size);
+	return (ptr);
 }
