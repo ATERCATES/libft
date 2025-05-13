@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 02:36:37 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/12 11:31:42 by javifer2         ###   ########.fr       */
+/*   Created: 2025/05/12 11:17:09 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/12 11:24:37 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	while (*s && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
-}
+	size_t	i;
+	size_t	j;
+	char	*ptr;
 
-/*Busca un carácter en una string, si existe devuelve un puntero char a la posición del carácter, si no devuelve NULL*/
+	ptr = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (ptr == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
+	{
+		ptr[j] = s1[i];
+		i++;
+		j++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		ptr[j] = s2[i];
+		i++;
+		j++;
+	}
+	ptr[j] = '\0';
+	return (ptr);
+}
