@@ -6,12 +6,23 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:53:34 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/12 12:28:58 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/13 19:25:12 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+/*#include <libft.h>*/
 #include <stdlib.h>
+#include <stdio.h>
+
+void	error_clean(char **result, int arr)
+{
+	while (arr >= 0)
+	{
+		free(result[arr]);
+		arr--;
+	}
+	free(result);
+}
 
 void	fill_str(char const *s, char *result, int start, int end)
 {
@@ -24,47 +35,94 @@ void	fill_str(char const *s, char *result, int start, int end)
 		i++;
 		start++;
 	}
+	result[i] = '\0';
 }
 
-int	get_buffer_size(char const *s, char c)
+char	**get_str_memory(char const *s, char c)
 {
-	int	counter;
-	int	i;
+	int		in_word;
+	int		counter;
+	char	**result;
 
+	in_word = 0;
 	counter = 0;
-	i = 0;
-	while (s[i])
+	while (*s != '\0')
 	{
-		if (s[i] == c)
+		if (*s != c && !in_word)
+			in_word = 1;
+		else if (*s == c && in_word)
+		{
 			counter++;
-		i++;
+			in_word = 0;
+		}
+		s++;
 	}
-	return (ft_strlen(s) - counter + 1);
+	if (in_word)
+		counter++;
+	result = malloc((counter + 1) * sizeof(char *));
+	if (result == NULL)
+		return (NULL);
+	return (result);
+}
+
+char	*allocate_fill(char **result, int str, int size)
+{
+	result[str] = malloc((size + 1) * sizeof(char));
+	if (result[str] == NULL)
+	{
+		error_clean(result, str);
+		return (NULL);
+	}
+	return (result[str]);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	str;
 	char	**result;
+	int		str;
+	int		start;
+	int		end;
 
-	result = malloc(get_buffer_size(s, c));
-	if (result == NULL)
-		return (NULL);
+	start = 0;
+	end = 0;
 	str = 0;
-	i = 0;
-	while (s[i] != '\0')
+	result = get_str_memory(s, c);
+	while (s[end])
 	{
-		j = i;
-		while (s[i] != c)
+		while (s[end] && s[end] != c)
+			end++;
+		if ((s[end] == c || s[end] == '\0') && end - start != 0)
 		{
-			i++;
+			result[str] = allocate_fill(result, str, end - start);
+			fill_str(s, result[str], start, end);
+			str++;
 		}
-		fill_str(s, result[str], j, i);
-		i++;
-		str++;
+		while (s[end] == c)
+			end++;
+		start = end;
 	}
 	result[str] = NULL;
 	return (result);
+}
+
+int	main(int argc, char **argv)
+{
+	int		i;
+	char	**result;
+
+	if (argc != 3)
+	{
+		printf("Parámetros incorrectos! Uso: %s 'cadena' 'separador'", argv[0]);
+		return (1);
+	}
+	result = ft_split(argv[1], argv[2][0]);
+	i = 0;
+	while (result[i])
+	{
+		printf("Cadena %d: %s\n", i, result[i]);
+		free(result[i]);
+		i++;
+	}
+	free (result);
+	return (0);
 }
