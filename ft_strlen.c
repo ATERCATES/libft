@@ -6,13 +6,13 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 20:25:47 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/07 20:33:41 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:33:43 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
