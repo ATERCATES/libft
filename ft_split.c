@@ -6,13 +6,12 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:53:34 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/13 19:25:12 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:15:15 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <libft.h>*/
+#include <libft.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 void	error_clean(char **result, int arr)
 {
@@ -104,7 +103,8 @@ char	**ft_split(char const *s, char c)
 	result[str] = NULL;
 	return (result);
 }
-
+/*
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -125,4 +125,4 @@ int	main(int argc, char **argv)
 	}
 	free (result);
 	return (0);
-}
+}*/

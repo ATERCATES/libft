@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 02:36:37 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/12 11:31:42 by javifer2         ###   ########.fr       */
+/*   Created: 2025/05/07 20:24:11 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/10 19:25:58 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-char	*ft_strchr(const char *s, int c)
+int	ft_isprint(int c)
 {
-	while (*s && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	return (c >= 32 && c <= 126);
 }
-
-/*Busca un carácter en una string, si existe devuelve un puntero char a la posición del carácter, si no devuelve NULL*/
