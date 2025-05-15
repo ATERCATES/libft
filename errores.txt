@@ -1,0 +1,156 @@
+Errores encontrados en funciones de libft:
+
+1. ft_atoi.c
+Función: int ft_atoi(const char *str)
+- El bucle while (*str <= ' ') es incorrecto. Debería comprobar todos los espacios en blanco (tab, newline, etc).
+- No se comprueba si str es NULL antes de usarlo.
+- En resultado = resultado * 10 + (int)*str - '0'; faltan paréntesis: resultado = resultado * 10 + ((int)*str - '0');
+
+2. ft_bzero.c
+Función: void ft_bzero(void *s, size_t n)
+- Sin errores encontrados.
+
+3. ft_calloc.c
+Función: void *ft_calloc(size_t num, size_t size)
+- El cálculo total_size = num * size puede provocar overflow, aunque hay comprobación. Mejorable pero correcto.
+
+4. ft_isalnum.c
+Función: int ft_isalnum(int c)
+- Sin errores encontrados.
+
+5. ft_isalpha.c
+Función: int ft_isalpha(int c)
+- Sin errores encontrados.
+
+6. ft_isascii.c
+Función: int ft_isascii(int c)
+- Sin errores encontrados.
+
+7. ft_isdigit.c
+Función: int ft_isdigit(int c)
+- El rango está mal: return (c >= 0 && c <= 9); debería ser return (c >= '0' && c <= '9');
+
+8. ft_isprint.c
+Función: int ft_isprint(int c)
+- Sin errores encontrados.
+
+9. ft_itoa.c
+Funciones: get_length, fill_str, ft_itoa
+- En get_length, si n es LONG_MIN, n = -n provoca overflow.
+- En fill_str, la recursividad puede causar desbordamiento de pila en números muy grandes (mejor usar bucle).
+
+10. ft_memchr.c
+Función: void *memchr(const void *s, int c, size_t n)
+- El nombre debería ser ft_memchr para evitar conflicto con la estándar.
+- Puede acceder fuera de los límites del array si no se comprueba i < n antes de acceder a p[i].
+
+11. ft_memcmp.c
+Función: int ft_memcmp(const void *s1, const void *s2, size_t n)
+- Si n > 0 y los punteros son NULL, puede provocar comportamiento indefinido. No es obligatorio comprobar punteros NULL, pero sería más robusto.
+
+12. ft_memcpy.c
+Función: void *ft_memcpy(void *dst, const void *src, size_t n)
+- Si dst o src son NULL y n > 0, retorna NULL, lo cual es diferente al comportamiento estándar de memcpy (comportamiento indefinido). Es aceptable para robustez, pero no estándar.
+
+13. ft_memmove.c
+Función: void *ft_memmove(void *dest, const void *src, size_t n)
+- No comprueba si dest o src son NULL cuando n > 0. El estándar permite comportamiento indefinido, pero sería más robusto añadir la comprobación.
+
+14. ft_memset.c
+Función: void *ft_memset(void *s, int c, size_t n)
+- Sin errores encontrados.
+
+15. ft_putchar_fd.c
+Función: void ft_putchar_fd(char c, int fd)
+- No se comprueba si el descriptor de archivo (fd) es válido. Si se pasa un valor incorrecto, puede provocar errores en tiempo de ejecución.
+
+16. ft_putendl_fd.c
+Función: void ft_putendl_fd(char *s, int fd)
+- No se comprueba si s es NULL antes de llamar a ft_putstr_fd(s, fd). Si se pasa un puntero nulo, puede provocar un segmentation fault.
+
+17. ft_putnbr_fd.c
+Función: void ft_putnbr_fd(int n, int fd)
+- No se comprueba si el descriptor de archivo (fd) es válido.
+- No se han detectado errores graves en la lógica.
+
+18. ft_putstr_fd.c
+Función: void ft_putstr_fd(char *s, int fd)
+- No se comprueba si s es NULL antes de entrar en el bucle. Si se pasa un puntero nulo, puede provocar un segmentation fault.
+
+19. ft_split.c
+Funciones: error_clean, fill_str, get_str_memory, allocate_fill, ft_split
+- En ft_split, no se comprueba si s es NULL antes de usarlo. Si se pasa un puntero nulo, puede provocar un segmentation fault.
+- En allocate_fill, si malloc falla, libera memoria pero retorna NULL sin señalizar el error a la función principal.
+- En error_clean, si result es NULL, puede provocar un segmentation fault.
+- En general, faltan comprobaciones de punteros nulos en varias funciones.
+
+20. ft_strchr.c
+Función: char *ft_strchr(const char *s, int c)
+- No se comprueba si s es NULL antes de usarlo. Si se pasa un puntero nulo, puede provocar un segmentation fault.
+- Implementación correcta salvo ese detalle.
+
+21. ft_strdup.c
+Función: char *ft_strdup(const char *s)
+- No comprueba si s es NULL antes de usarlo. Si se pasa un puntero nulo, puede provocar un segmentation fault.
+
+22. ft_striteri.c
+Función: void ft_striteri(char *s, void (*f)(unsigned int, char*))
+- Correctamente comprueba si s o f son NULL.
+- Sin errores encontrados.
+
+23. ft_strjoin.c
+Función: char *ft_strjoin(char const *s1, char const *s2)
+- No comprueba si s1 o s2 son NULL antes de usarlos. Puede provocar segmentation fault si alguno es nulo.
+
+24. ft_strlcat.c
+Función: size_t strlcat(char *dst, const char *src, size_t dstsize)
+- El nombre debería ser ft_strlcat para evitar conflicto con la función estándar.
+- No comprueba si dst o src son NULL.
+- Si dstsize es 0 y dst es NULL, el bucle while (dst[lendst] && lendst < dstsize) puede provocar acceso inválido.
+
+25. ft_strlcpy.c
+Función: size_t ft_strlcpy(char *dst, const char *src, size_t size)
+- No comprueba si dst o src son NULL antes de usarlos.
+
+26. ft_strlen.c
+Función: size_t ft_strlen(const char *str)
+- No comprueba si str es NULL antes de usarlo.
+
+27. ft_strmapi.c
+Función: char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+- Correctamente comprueba si s o f son NULL.
+- Sin errores encontrados.
+
+28. ft_strncmp.c
+Función: int strncmp(const char *s1, const char *s2, size_t n)
+- El nombre debería ser ft_strncmp para evitar conflicto con la función estándar.
+- No comprueba si s1 o s2 son NULL antes de usarlos.
+- Si n es 0, debería retornar 0 inmediatamente según el estándar.
+
+29. ft_strnstr.c
+Función: char *strnstr(const char *haystack, const char *needle, size_t len)
+- El nombre debería ser ft_strnstr para evitar conflicto con la función estándar.
+- No comprueba si haystack o needle son NULL.
+- El bucle puede acceder fuera de los límites si i >= len y se usa haystack[i].
+
+30. ft_strrchr.c
+Función: char *strrchr(const char *s, int c)
+- El nombre debería ser ft_strrchr para evitar conflicto con la función estándar.
+- No comprueba si s es NULL antes de usarlo.
+
+31. ft_strtrim.c
+Función: char *ft_strtrim(char const *s1, char const *set)
+- No comprueba si s1 o set son NULL antes de usarlos. Si alguno es nulo, puede provocar un segmentation fault.
+
+32. ft_substr.c
+Función: char *ft_substr(char const *s, unsigned int start, size_t len)
+- Si ft_strlen(s) < start, retorna una cadena vacía (""), pero retorna un puntero a un string literal, lo que puede provocar problemas si se intenta liberar después.
+
+33. ft_tolower.c
+Función: int ft_tolower(int c)
+- Sin errores encontrados. Implementación correcta.
+
+34. ft_toupper.c
+Función: int toupper(int c)
+- El nombre debería ser ft_toupper para evitar conflicto con la función estándar.
+- Sin errores en la lógica.
