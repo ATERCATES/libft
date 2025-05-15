@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:23:24 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 18:22:34 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:55:32 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 
 	resultado = 0;
 	sign = 1;
-	while (*str <= ' ')
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
