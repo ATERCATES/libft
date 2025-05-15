@@ -35,7 +35,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
 
     - name: Cache Francinette
       id: cache-francinette
@@ -48,7 +48,6 @@ jobs:
       if: steps.cache-francinette.outputs.cache-hit != 'true'
       run: |
         sudo apt-get update
-        pip install pipes
         git clone --depth=1 https://github.com/xicodomingues/francinette.git ~/francinette
         cd ~/francinette
         bash "./bin/install.sh"
