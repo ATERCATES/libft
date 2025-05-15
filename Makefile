@@ -24,8 +24,8 @@ $(NAME): $(OBJS)
 %.o: %.c libft.h Makefile
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-#main:
-#	$(CC) $(CFLAGS) main.c -L. -lft
+main:
+	$(CC) $(CFLAGS) main.c -L. -lft
 
 # Regla para limpiar los archivos objeto
 clean:

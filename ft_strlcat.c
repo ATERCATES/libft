@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: javifer2 <javifer2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 01:56:38 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 19:33:43 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:02:55 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	if (lendst == dstsize)
 		return (dstsize + lensrc);
 	i = 0;
-	while (src[i] && lendst < dstsize - 1)
+	while (src[i] && lendst + i + 1 < dstsize)
 	{
-		dst[lendst] = src[i];
+		dst[lendst + i] = src[i];
 		i++;
-		lendst++;
 	}
-	dst[lendst] = '\0';
+	dst[lendst + i] = '\0';
 	return (lendst + lensrc);
 }
 
@@ -43,6 +42,7 @@ int	main(void)
 	size_t	trunc;
 
 	trunc = strlcat(dst, src, sizeof(dst));
-	printf("String resultante: %s, tamano esperado %ld, tamano recibido: %ld", dst, ft_strlen(src) + sizeof(dst), trunc);
+	printf("String resultante: %s, tamano esperado %ld,
+	tamano recibido: %ld", dst, ft_strlen(src) + sizeof(dst), trunc);
 	return (0);
 }*/
