@@ -136,7 +136,7 @@ jobs:
         tar -czf francinette_exp_tst.tar.gz francinette/temp/
 
     - name: Upload Francinette Export Tests artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: francinette-exp-test
         path: ~/francinette_exp_tst.tar.gz
@@ -144,3 +144,4 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@v4
+
