@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		length;
-	int		i;
+	size_t	length;
+	size_t	i;
 	char	*ptr;
 
 	if (!s || !f)

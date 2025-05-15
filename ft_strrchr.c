@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*strrchr(const char *s, int c)
 {
 	char	*pt;
 
 	if ((char)c == '\0')
-		return ((char *)s + strlen(s));
+		return ((char *)s + ft_strlen(s));
 	pt = NULL;
 	while (*s)
 	{

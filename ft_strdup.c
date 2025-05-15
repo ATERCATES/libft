@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {
 	char	*copy;
-	int		i;
-	int		length;
+	size_t	i;
+	size_t	length;
 
 	i = 0;
 	length = ft_strlen(s);

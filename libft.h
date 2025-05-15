@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumajeed <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 17:53:12 by mumajeed          #+#    #+#             */
-/*   Updated: 2024/10/16 01:12:46 by mumajeed         ###   ########.fr       */
+/*   Created: 2025/05/15 09:46:09 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/15 09:46:31 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stddef.h>
-# include <ctype.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-//Primera part
+// First part
 int		ft_isalnum(int c);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
@@ -44,7 +41,8 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strdup(const char *s);
-//Segon Part
+
+// Second Part
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);

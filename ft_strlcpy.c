@@ -6,13 +6,13 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:25:48 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/10 21:40:46 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 09:50:55 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	length;

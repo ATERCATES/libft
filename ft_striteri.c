@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
-	int	length;
+	size_t	i;
+	size_t	length;
 
 	if (!s || !f)
 		return ;
