@@ -48,6 +48,7 @@ jobs:
       if: steps.cache-francinette.outputs.cache-hit != 'true'
       run: |
         sudo apt-get update
+        pip install pipes
         git clone --depth=1 https://github.com/xicodomingues/francinette.git ~/francinette
         cd ~/francinette
         bash "./bin/install.sh"
