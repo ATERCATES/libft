@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:23:24 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/11 18:04:40 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:22:34 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 
 int	main(void)
 {
-	char	*str = "    +12313";
+	char	*str = "";
 	int	result;
 
 	result = ft_atoi(str);

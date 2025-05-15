@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 20:08:14 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/10 19:25:46 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:27:41 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int	ft_isdigit(int c)
 {
-	return (c >= 0 && c <= 9);
+	return (c >= '0' && c <= '9');
 }
+/*
+int	main(void)
+{
+	return (ft_isdigit('5'));
+}*/

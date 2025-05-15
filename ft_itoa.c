@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:09:53 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/13 23:25:05 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:34:03 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,13 @@ char	*ft_itoa(int n)
 
 /*
 #include <stdio.h>
-int	main(int argc, char **argv)
+int	main()
 {
 	int	length;
 	long	num;
 	char  *result;
 
-	if (argc != 2)
-	{
-		printf("Parametro invalido. Uso %s 'NUM'", argv[0]);
-		return (1);
-	}
-	num = ft_atoi(argv[1]); 
+	num = -2147483648; 
 	length = get_length(num);
 	printf("Reservando %d bytes de memoria para %ld\n", length, num);
 	result = ft_itoa(num);
