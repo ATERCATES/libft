@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:53:34 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/14 21:15:15 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/16 21:24:44 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	**ft_split(char const *s, char c)
 	end = 0;
 	str = 0;
 	result = get_str_memory(s, c);
-	while (s[end])
+	while (s && s[end] && result != NULL)
 	{
 		while (s[end] && s[end] != c)
 			end++;

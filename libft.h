@@ -6,17 +6,16 @@
 /*   By: javifer2 <javifer2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:46:09 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 20:29:48 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:56:51 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
 // First part
 int		ft_isalnum(int c);
 int		ft_isdigit(int c);
