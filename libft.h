@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 09:46:09 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/16 20:56:51 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:03:19 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,12 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// Bonus
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list;
 
 #endif
