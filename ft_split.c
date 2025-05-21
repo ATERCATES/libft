@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javifer2 <javifer2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 11:53:34 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/20 17:48:18 by javifer2         ###   ########.fr       */
+/*   Created: 2025/05/21 20:32:01 by javifer2          #+#    #+#             */
+/*   Updated: 2025/05/21 20:51:08 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void	error_clean(char **result, int arr)
 {
@@ -23,84 +22,82 @@ static void	error_clean(char **result, int arr)
 	free(result);
 }
 
-static void	fill_str(char const *s, char *result, int start, int end)
+static int	count_words(char const *s, char c)
 {
-	int	i;
+	int	count;
+	int	in_word;
 
-	i = 0;
-	while (start < end)
-	{
-		result[i] = s[start];
-		i++;
-		start++;
-	}
-	result[i] = '\0';
-}
-
-static char	**get_str_memory(char const *s, char c)
-{
-	int		in_word;
-	int		counter;
-	char	**result;
-
+	count = 0;
 	in_word = 0;
-	counter = 0;
-	while (*s != '\0')
+	while (*s)
 	{
 		if (*s != c && !in_word)
-			in_word = 1;
-		else if (*s == c && in_word)
 		{
-			counter++;
-			in_word = 0;
+			in_word = 1;
+			count++;
 		}
+		else if (*s == c)
+			in_word = 0;
 		s++;
 	}
-	if (in_word)
-		counter++;
-	result = malloc((counter + 1) * sizeof(char *));
-	if (result == NULL)
-		return (NULL);
-	return (result);
+	return (count);
 }
 
-static char	*allocate_fill(char **result, int str, int size)
+static char	*allocate_word(char const *s, int start, int len)
 {
-	result[str] = malloc((size + 1) * sizeof(char));
-	if (result[str] == NULL)
-	{
-		error_clean(result, str);
+	char	*word;
+	int		i;
+
+	word = malloc(sizeof(char) * (len + 1));
+	if (!word)
 		return (NULL);
+	i = 0;
+	while (i < len)
+		word[i++] = s[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+static int	process_words(char const *s, char c, char **result, int words)
+{
+	int	i;
+	int	j;
+	int	start;
+
+	i = 0;
+	j = 0;
+	while (s[i] && j < words)
+	{
+		while (s[i] == c)
+			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		result[j] = allocate_word(s, start, i - start);
+		if (!result[j])
+		{
+			error_clean(result, j - 1);
+			return (0);
+		}
+		j++;
 	}
-	return (result[str]);
+	result[j] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		str;
-	int		start;
-	int		end;
+	int		words;
 
-	start = 0;
-	end = 0;
-	str = 0;
-	result = get_str_memory(s, c);
-	while (s && s[end] && result != NULL)
-	{
-		while (s[end] && s[end] != c)
-			end++;
-		if ((s[end] == c || s[end] == '\0') && end - start != 0)
-		{
-			result[str] = allocate_fill(result, str, end - start);
-			fill_str(s, result[str], start, end);
-			str++;
-		}
-		while (s[end] == c)
-			end++;
-		start = end;
-	}
-	result[str] = NULL;
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	result = malloc(sizeof(char *) * (words + 1));
+	if (!result)
+		return (NULL);
+	if (!process_words(s, c, result, words))
+		return (NULL);
 	return (result);
 }
 
@@ -120,30 +117,10 @@ int	main(void)
 		free(result[i]);
 	}
 	if (!result)
+	{
+		free(result);
  		return (0);
- 	return (1);
+	}
 	free(result);
-}
-
-#include <stdio.h>
-int	main(int argc, char **argv)
-{
-	int		i;
-	char	**result;
-
-	if (argc != 3)
-	{
-		printf("Parámetros incorrectos! Uso: %s 'cadena' 'separador'", argv[0]);
-		return (1);
-	}
-	result = ft_split(argv[1], argv[2][0]);
-	i = 0;
-	while (result[i])
-	{
-		printf("Cadena %d: %s\n", i, result[i]);
-		free(result[i]);
-		i++;
-	}
-	free (result);
-	return (0);
+ 	return (1);
 }*/
