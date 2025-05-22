@@ -120,7 +120,7 @@ jobs:
         echo "Norminette version:"
         norminette -v || echo "Failed to get Norminette version"
         echo "Ejecutando Francinette:"
-        script -e -c "stdbuf -oL ~/francinette/tester.sh | tee francinette_output.log" /dev/null
+        script -e -c "stdbuf -oL ~/francinette/tester.sh --strict | tee francinette_output.log" /dev/null
         search_result=$(grep -rnil "All tests passed! Congratulations!" .)
         echo "Search result: $search_result"
         if echo "$search_result" | grep -q "output.log"; then
