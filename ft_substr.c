@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:43:49 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/22 20:12:57 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:40:21 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	newstr = malloc((len + 1) * sizeof(char));
 	if (!newstr)
 		return (NULL);
-	while (s[start + i] && i < len)
+	while (i < len && s[start + i])
 	{
 		newstr[i] = s[start + i];
 		i++;
