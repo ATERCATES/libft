@@ -6,33 +6,28 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 20:09:53 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 18:34:03 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:13:40 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	get_length(long n)
 {
 	int	i;
-	int	negative;
 
-	i = 0;
-	negative = 0;
+	i = 2;
 	if (n < 0)
 	{
 		n = -n;
-		negative = 1;
+		i++;
 	}
 	while (n >= 10)
 	{
-		n = n / 10;
+		n /= 10;
 		i++;
 	}
-	if (negative)
-		return (i + 3);
-	return (i + 2);
+	return (i);
 }
 
 static void	fill_str(char *result, long n, int p)

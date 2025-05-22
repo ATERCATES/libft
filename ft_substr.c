@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 18:43:49 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/16 21:26:00 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:12:57 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
+	char	*newstr;
 	size_t	i;
+	size_t	slength;
 
-	if (len == 0 || ft_strlen(s) < start)
-	{
-		substr = malloc(1 * sizeof(char));
-		if (substr == NULL)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
-	}
-	if (len > ft_strlen(s) - start)
-		len = ft_strlen(s) - start;
-	substr = malloc(len + 1);
-	if (substr == NULL || !s)
-		return (NULL);
 	i = 0;
+	if (!s)
+		return (NULL);
+	slength = ft_strlen(s);
+	if (start >= slength)
+		len = 0;
+	if (len > slength - start)
+		len = slength - start;
+	newstr = malloc((len + 1) * sizeof(char));
+	if (!newstr)
+		return (NULL);
 	while (s[start + i] && i < len)
 	{
-		substr[i] = s[start + i];
+		newstr[i] = s[start + i];
 		i++;
 	}
-	substr[i] = '\0';
-	return (substr);
+	newstr[i] = '\0';
+	return (newstr);
 }

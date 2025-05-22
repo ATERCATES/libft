@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 03:15:46 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 19:34:11 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:16:45 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,8 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (pt);
 }
+
+/*
+El if del principio crea un puntero al caracter 
+nulo de la string si es lo que el usuario busca
+*/

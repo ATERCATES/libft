@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:23:24 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/15 18:55:32 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 18:33:23 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	resultado;
-	int	sign;
+	long	resultado;
+	int		sign;
 
 	resultado = 0;
 	sign = 1;
@@ -32,15 +32,13 @@ int	ft_atoi(const char *str)
 		resultado = resultado * 10 + (int)*str - '0';
 		str++;
 	}
-	return (resultado * sign);
+	return ((int)resultado * sign);
 }
 
 /*
-#include <stdio.h>
-
 int	main(void)
 {
-	char	*str = "";
+	char	*str = "-21474836489";
 	int	result;
 
 	result = ft_atoi(str);

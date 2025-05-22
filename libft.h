@@ -6,7 +6,7 @@
 /*   By: javifer2 <javifer2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:28:15 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/21 21:05:44 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 20:18:26 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/* Parte 1 - Funciones de libc */
+/* Parte 1 - Funciones de libft */
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

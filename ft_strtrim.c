@@ -6,12 +6,11 @@
 /*   By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:25:03 by javifer2          #+#    #+#             */
-/*   Updated: 2025/05/16 20:36:01 by javifer2         ###   ########.fr       */
+/*   Updated: 2025/05/22 19:33:45 by javifer2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
