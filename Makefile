@@ -6,7 +6,7 @@
 #    By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/22 18:00:37 by javifer2          #+#    #+#              #
-#    Updated: 2025/05/22 20:29:30 by javifer2         ###   ########.fr        #
+#    Updated: 2025/05/23 20:22:12 by javifer2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,6 @@ bonus: $(OBJS) $(BONUS_OBJS)
 %.o: %.c libft.h Makefile
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-main:
-	$(CC) $(CFLAGS) main.c -L. -lft
-
 # Regla para limpiar los archivos objeto
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
@@ -62,6 +59,9 @@ fclean: clean
 
 # Regla para recompilar todo (fclean + all)
 re: fclean all
+
+# main:
+#	$(CC) $(CFLAGS) main.c -L. -lft
 
 # Indicamos que no son archivos reales
 .PHONY: all clean fclean re bonus
