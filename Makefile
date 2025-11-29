@@ -6,45 +6,91 @@
 #    By: javifer2 <javifer2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/22 18:00:37 by javifer2          #+#    #+#              #
-#    Updated: 2025/11/03 15:39:22 by javifer2         ###   ########.fr        #
+#    Updated: 2025/11/29 14:23:00 by javifer2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+NAME		= libft.a
 
-SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
-	   ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c \
-	   ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
-	   ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
-	   ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+# Compilador y flags
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+INCLUDES	= -I include
 
-BONUS_SRCS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-             ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-             ft_lstmap.c
+# Directorios
+SRC_DIR		= src
+OBJ_DIR		= obj
+INC_DIR		= include
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+# Subdirectorios de src
+CHAR_DIR	= $(SRC_DIR)/char
+STR_DIR		= $(SRC_DIR)/str
+MEM_DIR		= $(SRC_DIR)/mem
+CONV_DIR	= $(SRC_DIR)/conv
+FD_DIR		= $(SRC_DIR)/fd
+LST_DIR		= $(SRC_DIR)/lst
 
-AR = ar -rcs
+# Archivos fuente por categoría
+CHAR_SRC	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
+			  ft_isprint.c ft_toupper.c ft_tolower.c
 
+STR_SRC		= ft_strlen.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
+			  ft_strnstr.c ft_strdup.c ft_strlcpy.c ft_strlcat.c \
+			  ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
+			  ft_strmapi.c ft_striteri.c
+
+MEM_SRC		= ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+			  ft_memchr.c ft_memcmp.c ft_calloc.c
+
+CONV_SRC	= ft_atoi.c ft_itoa.c
+
+FD_SRC		= ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+
+LST_SRC		= ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
+			  ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+
+# Rutas completas de fuentes
+SRCS		= $(addprefix $(CHAR_DIR)/, $(CHAR_SRC)) \
+			  $(addprefix $(STR_DIR)/, $(STR_SRC)) \
+			  $(addprefix $(MEM_DIR)/, $(MEM_SRC)) \
+			  $(addprefix $(CONV_DIR)/, $(CONV_SRC)) \
+			  $(addprefix $(FD_DIR)/, $(FD_SRC))
+
+BONUS_SRCS	= $(addprefix $(LST_DIR)/, $(LST_SRC))
+
+# Objetos
+OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJS	= $(BONUS_SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Colores para output
+GREEN		= \033[0;32m
+YELLOW		= \033[0;33m
+RESET		= \033[0m
+
+# Reglas
 all: $(NAME)
 
-$(NAME): $(OBJS) Makefile libft.h
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)✓ $(NAME) compilado$(RESET)"
 
 bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	@echo "$(GREEN)✓ $(NAME) compilado con bonus$(RESET)"
 
-%.o: %.c libft.h Makefile
-	$(CC) $(CFLAGS) -c -o $@ $<
+# Crear directorios obj y compilar .c a .o
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/libft.h
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@echo "$(YELLOW)Compilando: $<$(RESET)"
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)✓ Objetos eliminados$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(GREEN)✓ $(NAME) eliminado$(RESET)"
 
 re: fclean all
 
