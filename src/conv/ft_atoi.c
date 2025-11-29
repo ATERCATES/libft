@@ -34,14 +34,3 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)resultado * sign);
 }
-
-/*
-int	main(void)
-{
-	char	*str = "-21474836489";
-	int	result;
-
-	result = ft_atoi(str);
-	printf("El número final es %d", result);
-	return (0);
-}*/

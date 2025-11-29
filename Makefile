@@ -12,17 +12,17 @@
 
 NAME		= libft.a
 
-# Compilador y flags
+# Compiler and flags
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 INCLUDES	= -I include
 
-# Directorios
+# Directories
 SRC_DIR		= src
 OBJ_DIR		= obj
 INC_DIR		= include
 
-# Subdirectorios de src
+# Source subdirectories
 CHAR_DIR	= $(SRC_DIR)/char
 STR_DIR		= $(SRC_DIR)/str
 MEM_DIR		= $(SRC_DIR)/mem
@@ -30,7 +30,7 @@ CONV_DIR	= $(SRC_DIR)/conv
 FD_DIR		= $(SRC_DIR)/fd
 LST_DIR		= $(SRC_DIR)/lst
 
-# Archivos fuente por categoría
+# Source files by category
 CHAR_SRC	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 			  ft_isprint.c ft_toupper.c ft_tolower.c
 
@@ -49,7 +49,7 @@ FD_SRC		= ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 LST_SRC		= ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c ft_lstsize.c \
 			  ft_lstlast.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-# Rutas completas de fuentes
+# Full source paths
 SRCS		= $(addprefix $(CHAR_DIR)/, $(CHAR_SRC)) \
 			  $(addprefix $(STR_DIR)/, $(STR_SRC)) \
 			  $(addprefix $(MEM_DIR)/, $(MEM_SRC)) \
@@ -58,39 +58,39 @@ SRCS		= $(addprefix $(CHAR_DIR)/, $(CHAR_SRC)) \
 
 BONUS_SRCS	= $(addprefix $(LST_DIR)/, $(LST_SRC))
 
-# Objetos
+# Object files
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 BONUS_OBJS	= $(BONUS_SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Colores para output
+# Output colors
 GREEN		= \033[0;32m
 YELLOW		= \033[0;33m
 RESET		= \033[0m
 
-# Reglas
+# Rules
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)✓ $(NAME) compilado$(RESET)"
+	@echo "$(GREEN)✓ $(NAME) compiled$(RESET)"
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo "$(GREEN)✓ $(NAME) compilado con bonus$(RESET)"
+	@echo "$(GREEN)✓ $(NAME) compiled with bonus$(RESET)"
 
-# Crear directorios obj y compilar .c a .o
+# Create obj directories and compile .c to .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/libft.h
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(YELLOW)Compilando: $<$(RESET)"
+	@echo "$(YELLOW)Compiling: $<$(RESET)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(GREEN)✓ Objetos eliminados$(RESET)"
+	@echo "$(GREEN)✓ Objects removed$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(GREEN)✓ $(NAME) eliminado$(RESET)"
+	@echo "$(GREEN)✓ $(NAME) removed$(RESET)"
 
 re: fclean all
 

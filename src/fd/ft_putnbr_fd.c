@@ -30,13 +30,3 @@ void	ft_putnbr_fd(int n, int fd)
 	if (nb < 10)
 		ft_putchar_fd(nb + '0', fd);
 }
-
-/*
-int	main(void)
-{
-	int	num;
-
-	num = 2147483647;
-	ft_putnbr_fd(num, 1);
-	return (0);
-}*/

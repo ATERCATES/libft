@@ -27,11 +27,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	return (ptrs1[i] - ptrs2[i]);
 }
-/*
-int	main(void)
-{
-	int	res;
-
-	res = ft_strncmp("t", "", 0);
-	return (res);
-}*/

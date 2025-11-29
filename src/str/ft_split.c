@@ -100,27 +100,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (result);
 }
-
-/*
-#include <stdio.h>
-#include <stdlib.h>
-int	main(void)
-{
-	char *s = "      split       this for   me  !       ";
-	printf("Cadena original: '%s'\n", s);
-
-	char **result = ft_split(s, ' ');
-	printf("Cadena separada:\n");
-	for (int i = 0; result[i] != NULL; i++)
-	{
-		printf("Cadena %d: '%s'\n", i, result[i]);
-		free(result[i]);
-	}
-	if (!result)
-	{
-		free(result);
- 		return (0);
-	}
-	free(result);
- 	return (1);
-}*/

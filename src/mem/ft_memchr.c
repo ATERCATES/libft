@@ -27,12 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		return ((void *)(p + i));
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	int	res;
-	char s[] = {0, 1, 2 ,3 ,4 ,5};
-
-	res = ft_memchr(s, 0, 0);
-	return (res);
-}*/

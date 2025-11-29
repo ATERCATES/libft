@@ -27,8 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (pt);
 }
-
-/*
-El if del principio crea un puntero al caracter 
-nulo de la string si es lo que el usuario busca
-*/

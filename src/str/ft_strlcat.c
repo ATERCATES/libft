@@ -33,16 +33,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[lendst + i] = '\0';
 	return (lendst + lensrc);
 }
-
-/*
-int	main(void)
-{
-	char	*src = "Mundo!";
-	char	dst[12] = "Hola ";
-	size_t	trunc;
-
-	trunc = strlcat(dst, src, sizeof(dst));
-	printf("String resultante: %s, tamano esperado %ld,
-	tamano recibido: %ld", dst, ft_strlen(src) + sizeof(dst), trunc);
-	return (0);
-}*/

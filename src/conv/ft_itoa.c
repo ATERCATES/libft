@@ -60,20 +60,3 @@ char	*ft_itoa(int n)
 	fill_str(result, nb, size - 2);
 	return (result);
 }
-
-/*
-#include <stdio.h>
-int	main()
-{
-	int	length;
-	long	num;
-	char  *result;
-
-	num = -2147483648; 
-	length = get_length(num);
-	printf("Reservando %d bytes de memoria para %ld\n", length, num);
-	result = ft_itoa(num);
-	printf("La string resultante es %s\n", result);
-	free(result);
-	return (0);
-}*/

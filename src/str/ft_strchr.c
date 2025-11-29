@@ -20,6 +20,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-
-/*Busca un carácter en una string, si existe devuelve un puntero 
- * char a la posición del carácter, si no devuelve NULL*/
